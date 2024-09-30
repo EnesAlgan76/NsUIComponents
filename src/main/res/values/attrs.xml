@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NSEditText">
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="edgeWidth" format="dimension" />
+        <attr name="edgeColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+    </declare-styleable>
+
+</resources>
