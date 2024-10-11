@@ -7,4 +7,15 @@
         <attr name="backgroundColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="NSBottomNavView">
+        <attr name="navViewBackgroundColor" format="color"/>
+        <attr name="iconSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="NSImageView">
+        <attr name="imageCornerRadius" format="dimension"/>
+        <attr name="imageBorderColor" format="color"/>
+        <attr name="imageBorderWidth" format="dimension"/>
+    </declare-styleable>
+
 </resources>

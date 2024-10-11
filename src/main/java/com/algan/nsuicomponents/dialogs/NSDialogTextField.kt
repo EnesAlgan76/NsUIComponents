@@ -3,19 +3,23 @@ package com.algan.nsuicomponents.dialogs
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.text.InputFilter
 import android.view.KeyEvent
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.algan.nsuicomponents.R
 import com.algan.nsuicomponents.databinding.CustomTextFieldDialogBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 
 class NSDialogTextField : DialogFragment() {
 
     private var imageResId: Int = R.drawable.ic_info
     private var title: String = "Default Title"
     private var buttonText: String = "Ok"
+    private var editTextHint: String = ""
     private var buttonColor: Int = Color.BLUE
     private var backgroundColor: Int = Color.WHITE
 
@@ -27,6 +31,7 @@ class NSDialogTextField : DialogFragment() {
             imageResId = it.getInt(ARG_IMAGE, R.drawable.ic_info)
             title = it.getString(ARG_TITLE, "Default Title") ?: "Default Title"
             buttonText = it.getString(ARG_BUTTON_TEXT, "Ok") ?: "Ok"
+            editTextHint = it.getString(ARG_HINT, "") ?: ""
             buttonColor = it.getInt(ARG_BUTTON_COLOR, Color.BLUE)
             backgroundColor = it.getInt(ARG_BACKGROUND_COLOR, Color.WHITE)
         }
@@ -40,6 +45,16 @@ class NSDialogTextField : DialogFragment() {
             onDone?.invoke(editTextData)
             dialog?.dismiss()
         }
+        binding.editText.hint = editTextHint
+        binding.editText.filters = arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
+            for (i in start until end) {
+                val character = source[i]
+                if (!character.isLetterOrDigit()) {
+                    return@InputFilter ""
+                }
+            }
+            null
+        })
 
 
         val titleTextView: TextView = binding.root.findViewById(R.id.dialog_title)
@@ -50,8 +65,10 @@ class NSDialogTextField : DialogFragment() {
 
         binding.appCompatImageView.setImageResource(imageResId)
 
-        binding.linearLayout.setBackgroundColor(backgroundColor)
-        binding.cardViewIcon.setBackgroundColor(backgroundColor)
+        val lldrawable = binding.linearLayout.background as GradientDrawable
+        lldrawable.setColor(backgroundColor) // Set the background color without affecting the corner radius
+
+        binding.cardViewIcon.setCardBackgroundColor(backgroundColor)
 
         val dialog = MaterialAlertDialogBuilder(
             requireActivity(),
@@ -76,6 +93,7 @@ class NSDialogTextField : DialogFragment() {
         private const val ARG_IMAGE = "arg_image"
         private const val ARG_TITLE = "arg_title"
         private const val ARG_BUTTON_TEXT= "arg_button_text"
+        private const val ARG_HINT= "arg_hint"
         private const val ARG_BUTTON_COLOR = "arg_button_color"
         private const val ARG_BACKGROUND_COLOR = "arg_background"
 
@@ -83,6 +101,7 @@ class NSDialogTextField : DialogFragment() {
             imageResId: Int,
             title: String,
             buttonText :String,
+            editTextHint: String,
             buttonColor: Int,
             dialogBackground: Int
         ): NSDialogTextField {
@@ -91,6 +110,7 @@ class NSDialogTextField : DialogFragment() {
             args.putInt(ARG_IMAGE, imageResId)
             args.putString(ARG_TITLE, title)
             args.putString(ARG_BUTTON_TEXT, buttonText)
+            args.putString(ARG_HINT, editTextHint)
             args.putInt(ARG_BUTTON_COLOR, buttonColor)
             args.putInt(ARG_BACKGROUND_COLOR, dialogBackground)
             dialog.arguments = args

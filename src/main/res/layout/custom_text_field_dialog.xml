@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="INFO"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="16dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:textStyle="bold" />
 
@@ -60,7 +60,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/white"
         app:cardElevation="0dp"
         app:cardCornerRadius="50dp"
         app:layout_constraintHorizontal_bias="0.5"

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_icon_size">28dp</dimen>
+    <dimen name="icon_offset">5dp</dimen>
+    <dimen name="center_button_size">24dp</dimen>
+</resources>
