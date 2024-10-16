@@ -2,16 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     android:background="@android:color/transparent">
 
-    <ProgressBar
-        android:id="@+id/nsprogressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/materialCircularProgress"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:indeterminate="true"
-        android:progressTint="@color/lightGreen"
-        android:theme="@style/Widget.AppCompat.ProgressBar" />
+        app:indicatorSize="48dp"
+        app:trackThickness="6dp"
+        app:indicatorColor="@color/lightGreen"
+        app:trackColor="@color/white_dark" />
 
 </LinearLayout>

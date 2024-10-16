@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.ProgressBar
 import com.algan.nsuicomponents.R
+import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class NSCircleProgress(context: Context) : Dialog(context) {
 
-    private var progressBar: ProgressBar? = null
+    private var progressBar: CircularProgressIndicator? = null
 
     init {
 
@@ -28,7 +29,7 @@ class NSCircleProgress(context: Context) : Dialog(context) {
         window?.setBackgroundDrawableResource(android.R.color.transparent)
         setCancelable(false)
 
-        progressBar = view.findViewById(R.id.nsprogressBar)
+        progressBar = view.findViewById(R.id.materialCircularProgress)
     }
 
     fun showProgress() {
