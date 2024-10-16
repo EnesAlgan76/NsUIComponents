@@ -49,12 +49,13 @@ class NSDialogTextField : DialogFragment() {
         binding.editText.filters = arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
             for (i in start until end) {
                 val character = source[i]
-                if (!character.isLetterOrDigit()) {
+                if (!character.isLetterOrDigit() && character != ' ') {
                     return@InputFilter ""
                 }
             }
             null
         })
+
 
 
         val titleTextView: TextView = binding.root.findViewById(R.id.dialog_title)
